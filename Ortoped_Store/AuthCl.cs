@@ -18,6 +18,7 @@ namespace Ortoped_Store
         {
             try
             {
+                //Function
                 command.CommandText = "Select Count(*) from Profile where Login_Profile = '" + login + "' and Password_Profile = '" + password + "'";
                 Registry_Class.sqlConnection.Open();
                 Program.acc = (int)command.ExecuteScalar();

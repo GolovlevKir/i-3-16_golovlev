@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Ortoped_Store
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// Главная точка входа для приложения.

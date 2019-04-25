@@ -20,7 +20,7 @@ namespace Ortoped_Store
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public void button2_Click(object sender, EventArgs e)
         {
            // Perem perem = new Perem();
             Program.Log = textBox1.Text;

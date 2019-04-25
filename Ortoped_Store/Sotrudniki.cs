@@ -48,29 +48,33 @@ namespace Ortoped_Store
 
         private void SotrLoad()
         {
-            Action action = () =>
+            try
             {
-                try
+                Action action = () =>
                 {
-                    DataBaseTables dataComb = new DataBaseTables();
-                    dataComb.dtSotr.Clear();
-                    dataComb.dtSotrFill();
-                    dataComb.dependency.OnChange += Sotronchange;
-                    dataGridView1.DataSource = dataComb.dtSotr;
-                    dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.Columns[1].Visible = false;
-                    dataGridView1.Columns[2].Visible = false;
-                    dataGridView1.Columns[3].Visible = false;
-                    dataGridView1.Columns[5].HeaderText = "Дата рождения";
-                    dataGridView1.Columns[6].HeaderText = "Адрес проживания";
-                }
-                catch
-                {
+                    try
+                    {
+                        DataBaseTables dataComb = new DataBaseTables();
+                        dataComb.dtSotr.Clear();
+                        dataComb.dtSotrFill();
+                        dataComb.dependency.OnChange += Sotronchange;
+                        dataGridView1.DataSource = dataComb.dtSotr;
+                        dataGridView1.Columns[0].Visible = false;
+                        dataGridView1.Columns[1].Visible = false;
+                        dataGridView1.Columns[2].Visible = false;
+                        dataGridView1.Columns[3].Visible = false;
+                        dataGridView1.Columns[5].HeaderText = "Дата рождения";
+                        dataGridView1.Columns[6].HeaderText = "Адрес проживания";
+                    }
+                    catch
+                    {
 
-                }
+                    }
 
-            };
-            Invoke(action);
+                };
+                Invoke(action);
+            }
+            catch { }
         }
 
         private void Sotronchange(object sender, SqlNotificationEventArgs e)
@@ -81,6 +85,8 @@ namespace Ortoped_Store
 
         private void AccSotrLoad()
         {
+            try
+            { 
             Action action = () =>
             {
                 try
@@ -90,7 +96,7 @@ namespace Ortoped_Store
                     dataComb.dtProfileSotrFill();
                     dataComb.dependency.OnChange += AccSotrLoadonchange;
                     dataGridView2.DataSource = dataComb.dtProfile1;
-                    
+
                     Thread prov = new Thread(ProverkaS);
                     prov.Start();
                     dataGridView2.Columns[2].Visible = false;
@@ -116,6 +122,8 @@ namespace Ortoped_Store
 
             };
             Invoke(action);
+        }
+            catch { }
         }
 
         public void ProverkaS()

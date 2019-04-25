@@ -298,7 +298,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

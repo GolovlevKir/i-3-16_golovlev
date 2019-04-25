@@ -4,7 +4,7 @@ using Microsoft.Win32;
 
 namespace Ortoped_Store
 {
-    class Registry_Class
+    public class Registry_Class
     {
         public static string DS = "Empty", IC = "Empty", UI = "Empty", PW = "Empty";
         public static
@@ -36,6 +36,8 @@ namespace Ortoped_Store
                     "User ID = " + UI + "; Password = \"" + PW + "\"";
             }
         }
+
+
 
         public void Registry_Set(string ds, string ic, string ui, string pw)
         {
@@ -84,6 +86,10 @@ namespace Ortoped_Store
             }
         }
 
+        public string server()
+        {
+            return DS;
+        }
         public void MajorConfigurationSet(string Organization_Name)
         {
             RegistryKey registry = Registry.CurrentUser;

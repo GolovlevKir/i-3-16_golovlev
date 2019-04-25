@@ -22,7 +22,7 @@ namespace Ortoped_Store
             WindowState = FormWindowState.Maximized;
         }
 
-        private void Prihod_Load(object sender, EventArgs e)
+        public void Prihod_Load(object sender, EventArgs e)
         {
             Thread threadPrih = new Thread(PrihLoad);
             threadPrih.Start();

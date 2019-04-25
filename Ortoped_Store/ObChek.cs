@@ -49,35 +49,39 @@ namespace Ortoped_Store
 
         public void ChekLoad()
         {
-            Action action = () =>
+            try
             {
-                try
+                Action action = () =>
                 {
-                    DataBaseTables dataComb = new DataBaseTables();
-                    dataComb.dtChek.Clear();
-                    dataComb.dtChekFill();
-                    dataComb.dependency.OnChange += Chekonchange;
-                    dataGridView1.DataSource = dataComb.dtChek;
-                    dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.Columns[4].Visible = false;
-                    dataGridView1.Columns[5].Visible = false;
-                    dataGridView1.Columns[8].Visible = false;
-                    dataGridView1.Columns[9].Visible = false;
-                    dataGridView1.Columns[1].HeaderText = "№ Чека";
-                    dataGridView1.Columns[2].HeaderText = "ИНН";
-                    dataGridView1.Columns[3].HeaderText = "Дата и время продажи";
-                    dataGridView1.Columns[6].HeaderText = "Наименование товара";
-                    dataGridView1.Columns[7].HeaderText = "Кол-во";
-                    dataGridView1.Columns[10].HeaderText = "ФИО сотрудника";
+                    try
+                    {
+                        DataBaseTables dataComb = new DataBaseTables();
+                        dataComb.dtChek.Clear();
+                        dataComb.dtChekFill();
+                        dataComb.dependency.OnChange += Chekonchange;
+                        dataGridView1.DataSource = dataComb.dtChek;
+                        dataGridView1.Columns[0].Visible = false;
+                        dataGridView1.Columns[4].Visible = false;
+                        dataGridView1.Columns[5].Visible = false;
+                        dataGridView1.Columns[8].Visible = false;
+                        dataGridView1.Columns[9].Visible = false;
+                        dataGridView1.Columns[1].HeaderText = "№ Чека";
+                        dataGridView1.Columns[2].HeaderText = "ИНН";
+                        dataGridView1.Columns[3].HeaderText = "Дата и время продажи";
+                        dataGridView1.Columns[6].HeaderText = "Наименование товара";
+                        dataGridView1.Columns[7].HeaderText = "Кол-во";
+                        dataGridView1.Columns[10].HeaderText = "ФИО сотрудника";
 
-                }
-                catch
-                {
+                    }
+                    catch
+                    {
 
-                }
+                    }
 
-            };
-            Invoke(action);
+                };
+                Invoke(action);
+            }
+            catch { }
         }
 
         private void Chekonchange(object sender, SqlNotificationEventArgs e)
@@ -111,26 +115,31 @@ namespace Ortoped_Store
 
         public void SotrLoad()
         {
-            Action action = () =>
+            try
             {
-                try
+                Action action = () =>
                 {
-                    DataBaseTables dataComb = new DataBaseTables();
-                    dataComb.dtSotr.Clear();
-                    dataComb.dtSotrFill();
-                    dataComb.dependency.OnChange += Sotronchange;
-                    comboBox2.DataSource = dataComb.dtSotr;
-                    comboBox2.ValueMember = "Login_Sotr";
-                    comboBox2.DisplayMember = "ФИО";
-                    imya = comboBox2.Text;
-                }
-                catch
-                {
+                    try
+                    {
+                        DataBaseTables dataComb = new DataBaseTables();
+                        dataComb.dtSotr.Clear();
+                        dataComb.dtSotrFill();
+                        //Test function
+                        dataComb.dependency.OnChange += Sotronchange;
+                        comboBox2.DataSource = dataComb.dtSotr;
+                        comboBox2.ValueMember = "Login_Sotr";
+                        comboBox2.DisplayMember = "ФИО";
+                        imya = comboBox2.Text;
+                    }
+                    catch
+                    {
 
-                }
+                    }
 
-            };
-            Invoke(action);
+                };
+                Invoke(action);
+            }
+            catch { }
         }
 
         private void Sotronchange(object sender, SqlNotificationEventArgs e)
@@ -217,15 +226,19 @@ namespace Ortoped_Store
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            comboBox1.SelectedValue = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-            comboBox2.SelectedValue = dataGridView1.CurrentRow.Cells[9].Value.ToString();
-            numericUpDown1.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
-            label4.Text = "Номер чека: " + dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            label5.Text = "ИНН: " + dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            num = (int)dataGridView1.CurrentRow.Cells[1].Value;
-            inn = Convert.ToInt64(dataGridView1.CurrentRow.Cells[2].Value.ToString());
-            textBox8.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            try
+            {
+                dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                comboBox1.SelectedValue = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                comboBox2.SelectedValue = dataGridView1.CurrentRow.Cells[9].Value.ToString();
+                numericUpDown1.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
+                label4.Text = "Номер чека: " + dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                label5.Text = "ИНН: " + dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                num = (int)dataGridView1.CurrentRow.Cells[1].Value;
+                inn = Convert.ToInt64(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                textBox8.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            }
+            catch { }
         }
 
         private void ObChek_FormClosing(object sender, FormClosingEventArgs e)
