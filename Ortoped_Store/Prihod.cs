@@ -113,8 +113,12 @@ namespace Ortoped_Store
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            numericUpDown1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            comboBox4.SelectedValue = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            try
+            {
+                numericUpDown1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                comboBox4.SelectedValue = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            }
+            catch { }
         }
 
         private void Prihod_FormClosing(object sender, FormClosingEventArgs e)

@@ -14,6 +14,7 @@ namespace Ortoped_Store
 {
     public partial class ObChek : Form
     {
+        private const long V = 9999999999;
         public string imya;
         private DataBaseProcedure procedure = new DataBaseProcedure();
         SqlCommand command = new SqlCommand("", Registry_Class.sqlConnection);
@@ -94,25 +95,29 @@ namespace Ortoped_Store
 
         public void TovarLoad()
         {
-            Action action = () =>
+            try
             {
-                try
+                Action action = () =>
                 {
-                    DataBaseTables dataComb = new DataBaseTables();
-                    dataComb.dtTovar.Clear();
-                    dataComb.dtTovarFill();
-                    dataComb.dependency.OnChange += Tovaronchange;
-                    comboBox1.DataSource = dataComb.dtTovar;
-                    comboBox1.ValueMember = "ID_Tovar";
-                    comboBox1.DisplayMember = "Товар";
-                }
-                catch
-                {
+                    try
+                    {
+                        DataBaseTables dataComb = new DataBaseTables();
+                        dataComb.dtTovar.Clear();
+                        dataComb.dtTovarFill();
+                        dataComb.dependency.OnChange += Tovaronchange;
+                        comboBox1.DataSource = dataComb.dtTovar;
+                        comboBox1.ValueMember = "ID_Tovar";
+                        comboBox1.DisplayMember = "Товар";
+                    }
+                    catch
+                    {
 
-                }
+                    }
 
-            };
-            Invoke(action);
+                };
+                Invoke(action);
+            }
+            catch { }
         }
 
         public void SotrLoad()
@@ -213,6 +218,16 @@ namespace Ortoped_Store
 
         public void button3_Click(object sender, EventArgs e)
         {
+            Random random = new Random();
+            string i = random.Next(10000, 99999).ToString();
+            string j = random.Next(10000, 99999).ToString();
+            command.CommandText = "select max(Nom_Cheka) from Chek";
+            Registry_Class.sqlConnection.Open();
+            int maximum = (int)command.ExecuteScalar();
+            Registry_Class.sqlConnection.Close();
+            maximum++;
+            num = maximum;
+            inn = Convert.ToInt64(i+j);
             procedure.spAdd_Chek(num, inn.ToString(), (int)comboBox1.SelectedValue,(int)numericUpDown1.Value, comboBox2.SelectedValue.ToString());
         }
 
