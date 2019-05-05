@@ -242,6 +242,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "Отчет за месяц";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button1
             // 
@@ -253,6 +254,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Отчет о продажах (За Сегодня)";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label3
             // 

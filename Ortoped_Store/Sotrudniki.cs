@@ -432,5 +432,28 @@ namespace Ortoped_Store
             glav.Show();
             Hide();
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Documentacia configurationForm = new Documentacia();
+            configurationForm.Documentacia_Load(null, null);
+            switch (Registry_Class.DirPath == "Empry" || Registry_Class.OrganizationName == "Empty"
+                || Registry_Class.DocBM == 0.0 || Registry_Class.DocTM == 0.0 ||
+                Registry_Class.DocRM == 0.0 || Registry_Class.DocLM == 0.0)
+            {
+                case (true):
+
+                    configurationForm.ShowDialog();
+                    break;
+                case (false):
+                    DataBaseTables data = new DataBaseTables();
+                    data.qrSotr = "SELECT dbo.Sotr.Surname_Sotr + ' ' + dbo.Sotr.Name_Sotr + ' ' + dbo.Sotr.Middle_name_Sotr, dbo.Sotr.The_date_of_the_Rojd, dbo.Access_rights.Dolj FROM   dbo.Access_rights INNER JOIN dbo.Profile ON dbo.Access_rights.ID_Access_rights = dbo.Profile.Access_rights_ID INNER JOIN dbo.Sotr ON dbo.Profile.Login_Profile = dbo.Sotr.Login_Sotr ORDER BY dbo.Access_rights.Dolj ASC";
+                    data.dtSotrFill();
+                    ExcelDocument document = new ExcelDocument();
+                    document.dtDannieSklada = data.dtSotr;
+                    document.SpisokSotr();
+                    break;
+            }
+        }
     }
 }

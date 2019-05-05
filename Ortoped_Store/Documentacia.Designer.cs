@@ -53,6 +53,7 @@
             this.btSave = new System.Windows.Forms.Button();
             this.btApplye = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tcConfig.SuspendLayout();
             this.tpMajorConfig.SuspendLayout();
             this.tpDocument.SuspendLayout();
@@ -181,6 +182,7 @@
             this.gbRightMerj.TabIndex = 3;
             this.gbRightMerj.TabStop = false;
             this.gbRightMerj.Text = "Правый отступ";
+            this.gbRightMerj.Enter += new System.EventHandler(this.GbRightMerj_Enter);
             // 
             // nudRightMerg
             // 
@@ -196,6 +198,7 @@
             this.nudRightMerg.Name = "nudRightMerg";
             this.nudRightMerg.Size = new System.Drawing.Size(142, 26);
             this.nudRightMerg.TabIndex = 0;
+            this.nudRightMerg.ValueChanged += new System.EventHandler(this.NudRightMerg_ValueChanged);
             // 
             // gbLeftMerg
             // 
@@ -224,6 +227,7 @@
             this.nudLeftMerg.Name = "nudLeftMerg";
             this.nudLeftMerg.Size = new System.Drawing.Size(142, 26);
             this.nudLeftMerg.TabIndex = 0;
+            this.nudLeftMerg.ValueChanged += new System.EventHandler(this.NudLeftMerg_ValueChanged);
             // 
             // gbBottomMerg
             // 
@@ -252,6 +256,7 @@
             this.nudBottomMerg.Name = "nudBottomMerg";
             this.nudBottomMerg.Size = new System.Drawing.Size(507, 26);
             this.nudBottomMerg.TabIndex = 0;
+            this.nudBottomMerg.ValueChanged += new System.EventHandler(this.NudBottomMerg_ValueChanged);
             // 
             // gbTopMerg
             // 
@@ -280,6 +285,7 @@
             this.nudTopMerg.Name = "nudTopMerg";
             this.nudTopMerg.Size = new System.Drawing.Size(507, 26);
             this.nudTopMerg.TabIndex = 0;
+            this.nudTopMerg.ValueChanged += new System.EventHandler(this.NudTopMerg_ValueChanged);
             // 
             // lbWarningPath
             // 
@@ -324,6 +330,7 @@
             this.btBrowse.TabIndex = 0;
             this.btBrowse.Text = "...";
             this.btBrowse.UseVisualStyleBackColor = true;
+            this.btBrowse.Click += new System.EventHandler(this.BtBrowse_Click);
             // 
             // lbPath
             // 
@@ -358,6 +365,7 @@
             this.btSave.TabIndex = 2;
             this.btSave.Text = "Сохранить";
             this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.BtSave_Click);
             // 
             // btApplye
             // 
@@ -369,6 +377,7 @@
             this.btApplye.TabIndex = 1;
             this.btApplye.Text = "Применить";
             this.btApplye.UseVisualStyleBackColor = true;
+            this.btApplye.Click += new System.EventHandler(this.BtApplye_Click);
             // 
             // btCancel
             // 
@@ -380,6 +389,7 @@
             this.btCancel.TabIndex = 0;
             this.btCancel.Text = "Закрыть";
             this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.BtCancel_Click);
             // 
             // Documentacia
             // 
@@ -390,6 +400,7 @@
             this.Controls.Add(this.pnCancel);
             this.Name = "Documentacia";
             this.Text = "Документация";
+            this.Load += new System.EventHandler(this.Documentacia_Load);
             this.tcConfig.ResumeLayout(false);
             this.tpMajorConfig.ResumeLayout(false);
             this.tpDocument.ResumeLayout(false);
@@ -438,5 +449,6 @@
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Button btApplye;
         private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

@@ -24,7 +24,6 @@ namespace Ortoped_Store
         {
            // Perem perem = new Perem();
             Program.Log = textBox1.Text;
-            MessageBox.Show(Program.Log);
             auth.FunAuth(textBox1.Text, textBox2.Text);
             if (Program.acc == 1 && Program.System_Access == 1)
             {

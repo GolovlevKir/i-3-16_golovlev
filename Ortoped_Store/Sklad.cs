@@ -153,5 +153,32 @@ namespace Ortoped_Store
             dataGridView1.Columns[2].Width = 300;
             dataGridView1.Columns[3].HeaderText = "Количество";
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Documentacia configurationForm = new Documentacia();
+            configurationForm.Documentacia_Load(null, null);
+            switch (Registry_Class.DirPath == "Empry" || Registry_Class.OrganizationName == "Empty"
+                || Registry_Class.DocBM == 0.0 || Registry_Class.DocTM == 0.0 ||
+                Registry_Class.DocRM == 0.0 || Registry_Class.DocLM == 0.0)
+            {
+                case (true):
+                    configurationForm.ShowDialog();
+                    break;
+                case (false):
+                    DataBaseTables data = new DataBaseTables();
+                    data.qrSklad = "SELECT 'Фирма: ' + dbo.Firma.NaimFir + ', Вид: ' + dbo.Vidi_Tov.Naim + ', Пол: ' + dbo.Pol.Pol + ', Цвет: ' + dbo.Cvet_Tov.Cvet + ', Наимнование товара: ' + dbo.Tovar.Naim AS 'Наименование товара', dbo.Sklad.Kol_vo_Tov FROM   dbo.Cvet_Tov INNER JOIN dbo.Tovar ON dbo.Cvet_Tov.ID_Cvet = dbo.Tovar.ID_Cvet INNER JOIN dbo.Firma ON dbo.Tovar.Firm_ID = dbo.Firma.ID_Firm INNER JOIN dbo.Pol ON dbo.Tovar.ID_Pol = dbo.Pol.ID_Pol INNER JOIN dbo.Sklad ON dbo.Tovar.ID_Tovar = dbo.Sklad.ID_Tovar INNER JOIN dbo.Vidi_Tov ON dbo.Tovar.ID_Vid = dbo.Vidi_Tov.ID_Vid ";
+                    data.dtSkladFill();
+                    PDFDocument document = new PDFDocument();
+                    document.dtDannieSklada = data.dtSklad;
+                    document.Docum();
+                    break;
+            }
+        }
+
+        private void otch()
+        {
+            
+        }
     }
 }

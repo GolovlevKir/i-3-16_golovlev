@@ -144,5 +144,11 @@ namespace Ortoped_Store
             conectionForm.Show();
 
         }
+
+        private void НастройкаОтчетностиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Documentacia documentacia = new Documentacia();
+            documentacia.Show();
+        }
     }
 }

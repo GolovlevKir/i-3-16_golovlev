@@ -116,6 +116,7 @@
             this.настройкаОтчетностиToolStripMenuItem.Name = "настройкаОтчетностиToolStripMenuItem";
             this.настройкаОтчетностиToolStripMenuItem.Size = new System.Drawing.Size(332, 30);
             this.настройкаОтчетностиToolStripMenuItem.Text = "Настройка отчетности";
+            this.настройкаОтчетностиToolStripMenuItem.Click += new System.EventHandler(this.НастройкаОтчетностиToolStripMenuItem_Click);
             // 
             // настройкаПрофиляToolStripMenuItem
             // 
