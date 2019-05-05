@@ -150,7 +150,6 @@ namespace Ortoped_Store
         private void Button1_Click(object sender, EventArgs e)
         {
             new Thread(() => {
-                //работы где-то на 2 минуты
                 this.Invoke(new Action(() =>
                 {
                     button1.Enabled = false;
