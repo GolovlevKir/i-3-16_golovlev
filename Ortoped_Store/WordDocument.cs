@@ -42,7 +42,7 @@ namespace Ortoped_Store
                 Name_Doc.Format.Alignment = word.WdParagraphAlignment.wdAlignParagraphCenter;
                 Name_Doc.Range.Font.Name = "Times New Roman";
                 Name_Doc.Range.Font.Size = 14;
-                Name_Doc.Range.Text = "ПРОДАЖИ ЗА СЕГОДНЯ (" + DataSegod + ")";
+                Name_Doc.Range.Text = "ПРОДАЖИ ЗА СЕГОДНЯ (" + DateTime.Now.ToLongDateString() + ")";
                 document.Paragraphs.Add();
                 document.Paragraphs.Add();
                 document.Paragraphs.Add();
@@ -118,7 +118,7 @@ namespace Ortoped_Store
                 Name_Doc.Format.Alignment = word.WdParagraphAlignment.wdAlignParagraphCenter;
                 Name_Doc.Range.Font.Name = "Times New Roman";
                 Name_Doc.Range.Font.Size = 14;
-                Name_Doc.Range.Text = "ПРОДАЖИ ЗА МЕСЯЦ (" + Mes + ")";
+                Name_Doc.Range.Text = "ПРОДАЖИ ЗА МЕСЯЦ (" + DateTime.Now.ToString("MMMM") + ")";
                 document.Paragraphs.Add();
                 document.Paragraphs.Add();
                 document.Paragraphs.Add();

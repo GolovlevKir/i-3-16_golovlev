@@ -252,7 +252,23 @@ namespace Ortoped_Store
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            
+            new Thread(() => {
+                //работы где-то на 2 минуты
+                this.Invoke(new Action(() =>
+                {
+                    button1.Enabled = false;
+                }));
+                otZaDen();
+                this.Invoke(new Action(() =>
+                {
+                    button1.Enabled = true;
+                    MessageBox.Show("Отчет сохранен");
+                }));
+            }).Start();
+        }
+
+        public void otZaDen()
+        {
             Documentacia configurationForm = new Documentacia();
             configurationForm.Documentacia_Load(null, null);
             switch (Registry_Class.DirPath == "Empry" || Registry_Class.OrganizationName == "Empty"
@@ -279,6 +295,25 @@ namespace Ortoped_Store
         }
 
         private void Button2_Click(object sender, EventArgs e)
+        {
+            new Thread(() => {
+                //работы где-то на 2 минуты
+                this.Invoke(new Action(() =>
+                {
+                    button2.Enabled = false;
+                }));
+                otZaMes();
+                this.Invoke(new Action(() =>
+                {
+                    button2.Enabled = true;
+                    MessageBox.Show("Отчет сохранен");
+                }));
+            }).Start();
+
+           
+        }
+
+        public void otZaMes()
         {
             Documentacia configurationForm = new Documentacia();
             configurationForm.Documentacia_Load(null, null);
