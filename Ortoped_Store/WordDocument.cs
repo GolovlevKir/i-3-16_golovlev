@@ -1,6 +1,7 @@
 ﻿using Microsoft.Office.Interop.Word;
 using System;
 using word = Microsoft.Office.Interop.Word;
+using LibraryForSQLCon;
 
 namespace Ortoped_Store
 {

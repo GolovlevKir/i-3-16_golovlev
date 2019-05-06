@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibraryForSQLCon;
 
 namespace Ortoped_Store
 {
@@ -297,9 +291,16 @@ namespace Ortoped_Store
                     data.qrChek = "SELECT dbo.Chek.INN, dbo.Sotr.Surname_Sotr + ' ' + dbo.Sotr.Name_Sotr + ' ' + dbo.Sotr.Middle_name_Sotr, 'Фирма: ' + dbo.Firma.NaimFir + ', Вид: ' + dbo.Vidi_Tov.Naim + ', Пол: ' + dbo.Pol.Pol + ', Цвет: ' + dbo.Cvet_Tov.Cvet + ', Наименование товара: ' + dbo.Tovar.Naim AS 'Наименование товара', dbo.Chek.Kol_Vo* dbo.Tovar.Cena FROM   dbo.Chek INNER JOIN dbo.Sotr ON dbo.Chek.Login_Sotr = dbo.Sotr.Login_Sotr INNER JOIN dbo.Tovar ON dbo.Chek.ID_Tovar = dbo.Tovar.ID_Tovar INNER JOIN dbo.Firma ON dbo.Tovar.Firm_ID = dbo.Firma.ID_Firm INNER JOIN dbo.Pol ON dbo.Tovar.ID_Pol = dbo.Pol.ID_Pol INNER JOIN dbo.Cvet_Tov ON dbo.Tovar.ID_Cvet = dbo.Cvet_Tov.ID_Cvet INNER JOIN dbo.Vidi_Tov ON dbo.Tovar.ID_Vid = dbo.Vidi_Tov.ID_Vid where Data_Pech like '%'+CONVERT(VARCHAR(10),GETDATE(),104)+'%' or Data_Pech like '%'+CONVERT(VARCHAR(10),GETDATE(),4)+'%'";
                     data.dtChekFill();
                     WordDocument document = new WordDocument();
-                    command.CommandText = "SELECT  Sum(dbo.Chek.Kol_Vo* dbo.Tovar.Cena) FROM   dbo.Chek INNER JOIN dbo.Sotr ON dbo.Chek.Login_Sotr = dbo.Sotr.Login_Sotr INNER JOIN dbo.Tovar ON dbo.Chek.ID_Tovar = dbo.Tovar.ID_Tovar INNER JOIN dbo.Firma ON dbo.Tovar.Firm_ID = dbo.Firma.ID_Firm INNER JOIN dbo.Pol ON dbo.Tovar.ID_Pol = dbo.Pol.ID_Pol INNER JOIN dbo.Cvet_Tov ON dbo.Tovar.ID_Cvet = dbo.Cvet_Tov.ID_Cvet INNER JOIN dbo.Vidi_Tov ON dbo.Tovar.ID_Vid = dbo.Vidi_Tov.ID_Vid where Data_Pech like '%'+CONVERT(VARCHAR(10),GETDATE(),104)+'%' or Data_Pech like '%'+CONVERT(VARCHAR(10),GETDATE(),4)+'%'";
+                    command.CommandText = "SELECT Sum(dbo.Chek.Kol_Vo * dbo.Tovar.Cena) FROM   dbo.Chek INNER JOIN dbo.Sotr ON dbo.Chek.Login_Sotr = dbo.Sotr.Login_Sotr INNER JOIN dbo.Tovar ON dbo.Chek.ID_Tovar = dbo.Tovar.ID_Tovar INNER JOIN dbo.Firma ON dbo.Tovar.Firm_ID = dbo.Firma.ID_Firm INNER JOIN dbo.Pol ON dbo.Tovar.ID_Pol = dbo.Pol.ID_Pol INNER JOIN dbo.Cvet_Tov ON dbo.Tovar.ID_Cvet = dbo.Cvet_Tov.ID_Cvet INNER JOIN dbo.Vidi_Tov ON dbo.Tovar.ID_Vid = dbo.Vidi_Tov.ID_Vid where Data_Pech like '%'+CONVERT(VARCHAR(10),GETDATE(),104)+'%' or Data_Pech like '%'+CONVERT(VARCHAR(10),GETDATE(),4)+'%'";
                     Registry_Class.sqlConnection.Open();
-                    Itog = (decimal)command.ExecuteScalar();
+                    try
+                    {
+                        Itog = Convert.ToDecimal(command.ExecuteScalar());
+                    }
+                    catch
+                    {
+                        Itog = 0;
+                    }
                     Registry_Class.sqlConnection.Close();
                     document.table = data.dtChek;
                     document.table2 = Itog.ToString();

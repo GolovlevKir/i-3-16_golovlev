@@ -398,7 +398,11 @@
             this.ClientSize = new System.Drawing.Size(539, 558);
             this.Controls.Add(this.tcConfig);
             this.Controls.Add(this.pnCancel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Documentacia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Документация";
             this.Load += new System.EventHandler(this.Documentacia_Load);
             this.tcConfig.ResumeLayout(false);

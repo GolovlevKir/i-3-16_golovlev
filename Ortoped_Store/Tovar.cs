@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibraryForSQLCon;
 
 namespace Ortoped_Store
 {
@@ -285,39 +279,43 @@ namespace Ortoped_Store
 
         private void TovariLoad()
         {
-            Action action = () =>
+            try
             {
-                try
+                Action action = () =>
                 {
-                    DataBaseTables dataComb = new DataBaseTables();
-                    dataComb.dtTovar.Clear();
-                    dataComb.dtTovarFill();
-                    dataComb.dependency.OnChange += Tovonchange;
-                    dataGridView1.DataSource = dataComb.dtTovar;
-                    dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.Columns[2].Visible = false;
-                    dataGridView1.Columns[3].Visible = false;
-                    dataGridView1.Columns[6].Visible = false;
-                    dataGridView1.Columns[7].Visible = false;
-                    dataGridView1.Columns[9].Visible = false;
-                    dataGridView1.Columns[10].Visible = false;
-                    dataGridView1.Columns[12].Visible = false;
-                    dataGridView1.Columns[13].Visible = false;
-                    dataGridView1.Columns[15].Visible = false;
-                    dataGridView1.Columns[1].HeaderText = "Наименование";
-                    dataGridView1.Columns[4].HeaderText = "Фирма";
-                    dataGridView1.Columns[5].HeaderText = "Цена";
-                    dataGridView1.Columns[8].HeaderText = "Пол";
-                    dataGridView1.Columns[11].HeaderText = "Цвет";
-                    dataGridView1.Columns[14].HeaderText = "Вид";
-                }
-                catch
-                {
+                    try
+                    {
+                        DataBaseTables dataComb = new DataBaseTables();
+                        dataComb.dtTovar.Clear();
+                        dataComb.dtTovarFill();
+                        dataComb.dependency.OnChange += Tovonchange;
+                        dataGridView1.DataSource = dataComb.dtTovar;
+                        dataGridView1.Columns[0].Visible = false;
+                        dataGridView1.Columns[2].Visible = false;
+                        dataGridView1.Columns[3].Visible = false;
+                        dataGridView1.Columns[6].Visible = false;
+                        dataGridView1.Columns[7].Visible = false;
+                        dataGridView1.Columns[9].Visible = false;
+                        dataGridView1.Columns[10].Visible = false;
+                        dataGridView1.Columns[12].Visible = false;
+                        dataGridView1.Columns[13].Visible = false;
+                        dataGridView1.Columns[15].Visible = false;
+                        dataGridView1.Columns[1].HeaderText = "Наименование";
+                        dataGridView1.Columns[4].HeaderText = "Фирма";
+                        dataGridView1.Columns[5].HeaderText = "Цена";
+                        dataGridView1.Columns[8].HeaderText = "Пол";
+                        dataGridView1.Columns[11].HeaderText = "Цвет";
+                        dataGridView1.Columns[14].HeaderText = "Вид";
+                    }
+                    catch
+                    {
 
-                }
+                    }
 
-            };
-            Invoke(action);
+                };
+                Invoke(action);
+            }
+            catch { }
         }
 
         private void Tovonchange(object sender, SqlNotificationEventArgs e)
